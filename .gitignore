@@ -1,0 +1,6 @@
+out/
+wallet.json
+transcripts.tar.gz
+*.mp4
+*.png
+.env
