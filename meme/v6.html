@@ -52,16 +52,16 @@
   }
   .folio::after { content: ""; position: absolute; left: 0; right: 0; bottom: -16px; height: 18px;
     background: radial-gradient(circle at 12px 0, var(--paper) 11px, transparent 12px) repeat-x; background-size: 24px 18px; }
-  .folio::before { content: ""; position: absolute; inset: 8px; border: 2px solid #c9a24a; outline: 1px solid #c9a24a; outline-offset: -6px; border-radius: 4px; pointer-events: none; z-index: 1; }
+  .folio::before { content: ""; position: absolute; inset: 8px; border: 2px solid #c41f84; outline: 1px solid #c41f84; outline-offset: -6px; border-radius: 4px; pointer-events: none; z-index: 1; }
   .crest { width: 64px; height: 76px; flex: none; margin-right: 18px; }
   .fhead .left { display: flex; align-items: center; }
-  .fhead .h .gold { background: linear-gradient(180deg, #fff2b8 0%, #e9c15a 45%, #b8872c 55%, #f5d77e 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  th { font-size: 12px; letter-spacing: 3px; color: #8a6a2a; text-align: left; font-weight: 800; padding: 6px 0 4px; border-bottom: 2px solid #1b171d; }
+  .fhead .h .gold { color: #fff; }
+  th { font-size: 12px; letter-spacing: 3px; color: #7a6a72; text-align: left; font-weight: 800; padding: 6px 0 4px; border-bottom: 2px solid #1b171d; }
   th.amt { text-align: right; }
-  td.no { width: 38px; font-family: "JetBrains Mono", monospace; font-size: 15px; color: #8a6a2a; padding-top: 13px; }
-  .fhead { background: var(--ink); color: #fff; padding: 20px 34px 18px; border-radius: 6px 6px 0 0; border-bottom: 4px solid #c9a24a; display: flex; justify-content: space-between; align-items: center; }
+  td.no { width: 38px; font-family: "JetBrains Mono", monospace; font-size: 15px; color: #7a6a72; padding-top: 13px; }
+  .fhead { background: var(--ink); color: #fff; padding: 20px 34px 18px; border-radius: 6px 6px 0 0; border-bottom: 4px solid #c41f84; display: flex; justify-content: space-between; align-items: center; }
   .fhead .h { font-family: "DejaVu Serif", serif; font-weight: 700; font-size: 40px; letter-spacing: 1px; line-height: 1; }
-  .fhead .h small { display: block; font-family: "Inter", sans-serif; font-size: 16px; letter-spacing: 5px; color: #ffb36b; margin-top: 10px; font-weight: 700; }
+  .fhead .h small { display: block; font-family: "Inter", sans-serif; font-size: 16px; letter-spacing: 5px; color: #ff8ad0; margin-top: 10px; font-weight: 700; }
   .fhead .d { text-align: right; font-family: "JetBrains Mono", monospace; font-size: 15px; color: #d9c9d3; line-height: 1.5; }
   .fhead .d b { display: block; color: #fff; font-family: "Inter", sans-serif; font-weight: 900; font-size: 24px; letter-spacing: 3px; }
 
@@ -165,7 +165,7 @@
     <div class="fhead">
       <div class="left">
         <svg class="crest" viewBox="0 0 86 100" aria-hidden="true">
-          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".5" stop-color="#d8ad4a"/><stop offset="1" stop-color="#9a6e22"/></linearGradient></defs>
+          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd1ec"/><stop offset=".5" stop-color="#e0218a"/><stop offset="1" stop-color="#9c1569"/></linearGradient></defs>
           <path d="M43 4 L80 16 L80 52 C80 76 62 90 43 97 C24 90 6 76 6 52 L6 16Z" fill="#1d1530" stroke="url(#g)" stroke-width="4"/>
           <path d="M46 80 C45 66 43 56 40 46" stroke="url(#g)" stroke-width="4" fill="none" stroke-linecap="round"/>
           <g fill="url(#g)"><path d="M40 46 C32 40 22 40 17 46 C23 37 33 36 40 42Z"/><path d="M40 46 C48 39 59 39 66 45 C58 41 50 42 40 46Z"/><path d="M40 46 C37 36 30 30 22 30 C32 26 40 34 42 43Z"/><path d="M40 46 C44 36 52 31 61 32 C52 35 46 40 41 46Z"/></g>
