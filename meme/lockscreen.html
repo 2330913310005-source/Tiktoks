@@ -31,36 +31,25 @@
       linear-gradient(180deg, #2a0b4a 0%, #7a1d86 40%, #e0218a 72%, #ff8a5c 100%); }
   .island { position: absolute; left: 50%; top: 18px; width: 170px; height: 46px; margin-left: -85px; border-radius: 24px; background: #000; }
   .status { position: absolute; left: 54px; right: 44px; top: 26px; display: flex; justify-content: space-between; color: #fff; font-weight: 700; font-size: 24px; }
-  .lock { position: absolute; left: 0; right: 0; top: 92px; text-align: center; color: #fff; font-size: 30px; }
-  .date { position: absolute; left: 0; right: 0; top: 134px; text-align: center; color: rgba(255,255,255,.92); font-weight: 700; font-size: 30px; }
-  .clock { position: absolute; left: 0; right: 0; top: 160px; text-align: center; color: #fff; font-weight: 800; font-size: 128px; letter-spacing: -6px; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
+  .date { position: absolute; left: 0; right: 0; top: 104px; text-align: center; color: rgba(255,255,255,.92); font-weight: 700; font-size: 30px; }
+  .clock { position: absolute; left: 0; right: 0; top: 140px; text-align: center; color: #fff; font-weight: 800; font-size: 150px; letter-spacing: -6px; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
 
-  .stack { position: absolute; z-index: 3; left: 22px; right: 22px; top: 352px; display: flex; flex-direction: column; gap: 12px; }
-  .n { display: flex; gap: 16px; align-items: flex-start; background: rgba(250,246,252,.9); border-radius: 30px; padding: 12px 20px; box-shadow: 0 6px 20px rgba(30,0,40,.18); }
+  .stack { position: absolute; z-index: 3; left: 24px; right: 24px; top: 372px; display: flex; flex-direction: column; gap: 16px; }
+  .n { display: flex; gap: 16px; align-items: flex-start; background: rgba(250,246,252,.9); border-radius: 30px; padding: 18px 22px; box-shadow: 0 6px 20px rgba(30,0,40,.18); }
   .n .ic { flex: none; width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 34px; overflow: hidden; }
   .n .ic img { width: 100%; height: 100%; }
   .n .tx { flex: 1; min-width: 0; }
   .n .top { display: flex; justify-content: space-between; font-size: 19px; font-weight: 800; color: #3a3340; letter-spacing: .5px; }
   .n .top span { font-weight: 500; color: #7a6f80; }
-  .n .msg { font-size: 23px; font-weight: 600; line-height: 1.22; margin-top: 3px; }
+  .n .msg { font-size: 25px; font-weight: 600; line-height: 1.22; margin-top: 3px; }
   .n.hot { background: #fff; box-shadow: 0 0 0 4px var(--mf), 0 10px 26px rgba(196,31,132,.45); }
   .n.hot .msg b { color: var(--mf); }
   .ic.rock { background: #f5b301; color: #111; font-weight: 900; }
   .ic.bank { background: #2f6fde; }
   .ic.boss { background: #5b5b66; }
   .ic.agent { background: #1b171d; }
-  .widgets { position: absolute; left: 0; right: 0; top: 296px; display: flex; justify-content: center; gap: 12px; z-index: 2; }
+  .widgets { position: absolute; left: 0; right: 0; top: 304px; display: flex; justify-content: center; gap: 12px; z-index: 2; }
   .w { background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.35); color: #fff; border-radius: 22px; padding: 8px 16px; font-weight: 800; font-size: 20px; white-space: nowrap; }
-  .w.red { color: #ffd0d0; }
-  .wall { position: absolute; left: 0; right: 0; bottom: 0; height: 260px; z-index: 1; opacity: .8; }
-  .peek { position: relative; height: 0; }
-  .peek div { position: absolute; left: 50%; border-radius: 0 0 26px 26px; background: rgba(250,246,252,.7); }
-  .peek .p1 { top: -4px; width: 78%; margin-left: -39%; height: 18px; }
-  .peek .p2 { top: -4px; width: 66%; margin-left: -33%; height: 32px; background: rgba(250,246,252,.5); z-index: -1; }
-  .more { text-align: center; color: #fff; font-weight: 700; font-size: 18px; margin-top: 36px; text-shadow: 0 1px 4px rgba(0,0,0,.4); }
-  .qbtn { position: absolute; bottom: 30px; width: 66px; height: 66px; border-radius: 50%; background: rgba(20,10,30,.45); border: 1px solid rgba(255,255,255,.3); z-index: 4;
-    display: flex; align-items: center; justify-content: center; font-size: 30px; }
-  .qbtn.l { left: 44px; } .qbtn.r { right: 44px; }
   .glare { position: absolute; inset: 0; z-index: 6; pointer-events: none; border-radius: 70px;
     background: linear-gradient(115deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.10) 38%, rgba(255,255,255,0) 46%); }
   .btn { position: absolute; width: 8px; border-radius: 4px; background: #2a2430; }
@@ -102,28 +91,13 @@
     <div class="btn" style="left:-10px; top:410px; height:100px"></div>
     <div class="btn" style="right:-10px; top:300px; height:150px"></div>
     <div class="screen">
-      <svg class="wall" viewBox="0 0 664 360" preserveAspectRatio="none" aria-hidden="true">
-        <g fill="#3a0f5c" opacity=".85">
-          <rect x="20" y="210" width="44" height="150"/><rect x="60" y="170" width="36" height="190"/><rect x="92" y="230" width="60" height="130"/>
-          <rect x="150" y="150" width="30" height="210"/><polygon points="150,150 165,120 180,150"/><rect x="178" y="240" width="70" height="120"/>
-          <rect x="420" y="200" width="56" height="160"/><rect x="472" y="140" width="38" height="220"/><rect x="506" y="220" width="66" height="140"/><rect x="570" y="180" width="50" height="180"/>
-        </g>
-        <g fill="#ffb3e0" opacity=".7">
-          <rect x="70" y="190" width="5" height="7"/><rect x="82" y="215" width="5" height="7"/><rect x="158" y="175" width="5" height="7"/><rect x="166" y="205" width="5" height="7"/>
-          <rect x="482" y="165" width="5" height="7"/><rect x="494" y="195" width="5" height="7"/><rect x="580" y="205" width="5" height="7"/><rect x="430" y="225" width="5" height="7"/>
-        </g>
-        <g fill="#2a0b40">
-          <path d="M300 360 C296 300 296 250 304 200" stroke="#2a0b40" stroke-width="9" fill="none"/>
-          <path d="M304 200 C284 184 258 184 244 200 C262 180 290 178 304 192Z"/><path d="M304 200 C322 182 350 182 364 198 C344 186 324 188 304 200Z"/>
-          <path d="M304 200 C296 174 276 162 256 162 C280 154 300 172 306 196Z"/><path d="M304 200 C312 172 334 160 356 164 C334 168 316 182 306 198Z"/>
-        </g>
-      </svg>
+      
       <div class="island"></div>
       <div class="status"><span>00:00</span><span>5G ▮▮▮</span></div>
-      <div class="lock">🔒</div>
+      
       <div class="date">Thursday, 19 November</div>
       <div class="clock">00:00</div>
-      <div class="widgets"><span class="w">☀ 31° Vice City</span><span class="w">🎮 GTA VI · OUT NOW</span><span class="w red">▮ 4%</span></div>
+      <div class="widgets"><span class="w">🎮 GTA VI · OUT NOW</span></div>
 
       <div class="stack">
         <div class="n">
@@ -146,11 +120,11 @@
           <div class="ic boss">👔</div>
           <div class="tx"><div class="top">BOSS<span>now</span></div><div class="msg">Let me guess. You're sick tomorrow?</div></div>
         </div>
-        <div class="peek"><div class="p2"></div><div class="p1"></div></div>
-        <div class="more">+47 more from "the boys 🎮" group chat</div>
+        
+        
       </div>
-      <div class="qbtn l">🔦</div>
-      <div class="qbtn r">📷</div>
+      
+      
       <div class="glare"></div>
       <div class="home"></div>
     </div>
