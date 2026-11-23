@@ -31,11 +31,11 @@
       linear-gradient(180deg, #2a0b4a 0%, #7a1d86 40%, #e0218a 72%, #ff8a5c 100%); }
   .island { position: absolute; left: 50%; top: 18px; width: 170px; height: 46px; margin-left: -85px; border-radius: 24px; background: #000; }
   .status { position: absolute; left: 54px; right: 44px; top: 26px; display: flex; justify-content: space-between; color: #fff; font-weight: 700; font-size: 24px; }
-  .date { position: absolute; left: 0; right: 0; top: 104px; text-align: center; color: rgba(255,255,255,.92); font-weight: 700; font-size: 30px; }
-  .clock { position: absolute; left: 0; right: 0; top: 140px; text-align: center; color: #fff; font-weight: 800; font-size: 150px; letter-spacing: -6px; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
+  .date { position: absolute; left: 0; right: 0; top: 92px; text-align: center; color: rgba(255,255,255,.92); font-weight: 700; font-size: 30px; }
+  .clock { position: absolute; left: 0; right: 0; top: 124px; text-align: center; color: #fff; font-weight: 800; font-size: 132px; letter-spacing: -6px; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
 
-  .stack { position: absolute; z-index: 3; left: 24px; right: 24px; top: 372px; display: flex; flex-direction: column; gap: 16px; }
-  .n { display: flex; gap: 16px; align-items: flex-start; background: rgba(250,246,252,.9); border-radius: 30px; padding: 18px 22px; box-shadow: 0 6px 20px rgba(30,0,40,.18); }
+  .stack { position: absolute; z-index: 3; left: 24px; right: 24px; top: 278px; display: flex; flex-direction: column; gap: 13px; }
+  .n { display: flex; gap: 16px; align-items: flex-start; background: rgba(250,246,252,.9); border-radius: 30px; padding: 14px 22px; box-shadow: 0 6px 20px rgba(30,0,40,.18); }
   .n .ic { flex: none; width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 34px; overflow: hidden; }
   .n .ic img { width: 100%; height: 100%; }
   .n .tx { flex: 1; min-width: 0; }
@@ -47,6 +47,7 @@
   .ic.rock { background: #f5b301; color: #111; font-weight: 900; }
   .ic.bank { background: #2f6fde; }
   .ic.boss { background: #5b5b66; }
+  .ic.mom { background: #ff9fc8; }
   .ic.agent { background: #1b171d; }
   .widgets { position: absolute; left: 0; right: 0; top: 304px; display: flex; justify-content: center; gap: 12px; z-index: 2; }
   .w { background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.35); color: #fff; border-radius: 22px; padding: 8px 16px; font-weight: 800; font-size: 20px; white-space: nowrap; }
@@ -65,7 +66,7 @@
   .banner { position: absolute; left: 0; right: 0; bottom: 0; height: 150px; z-index: 9; background: var(--mf); border-top: 6px solid var(--ink);
     display: flex; align-items: center; padding-left: 190px; color: #fff; }
   .banner .mark { position: absolute; left: 22px; bottom: 10px; width: 150px; height: 150px; transform: rotate(-10deg); filter: drop-shadow(0 8px 12px rgba(0,0,0,.4)); }
-  .banner .big { font-weight: 900; font-size: 50px; line-height: 1; text-shadow: 4px 4px 0 var(--ink); }
+  .banner .big { font-weight: 900; font-size: 46px; line-height: 1; text-shadow: 4px 4px 0 var(--ink); }
   .banner .sub { font-weight: 700; font-size: 24px; margin-top: 10px; }
   .banner .sub b { background: var(--ink); padding: 1px 10px; border-radius: 4px; }
 </style>
@@ -97,16 +98,18 @@
       
       <div class="date">Thursday, 19 November</div>
       <div class="clock">00:00</div>
-      <div class="widgets"><span class="w">🎮 GTA VI · OUT NOW</span></div>
-
       <div class="stack">
         <div class="n">
           <div class="ic rock">★</div>
-          <div class="tx"><div class="top">ROCKSTAR GAMES<span>now</span></div><div class="msg">GTA VI is out.<br>Thanks for waiting 13 years.</div></div>
+          <div class="tx"><div class="top">ROCKSTAR GAMES<span>now</span></div><div class="msg">GTA VI is finally out.<br>Hope you're still alive.</div></div>
         </div>
         <div class="n">
           <div class="ic bank">🏦</div>
           <div class="tx"><div class="top">BANK<span>now</span></div><div class="msg">Card declined: GTA VI $69.99<br>Balance: $4.20 💀</div></div>
+        </div>
+        <div class="n">
+          <div class="ic mom">👩</div>
+          <div class="tx"><div class="top">MOM<span>now</span></div><div class="msg">Why did you sell your bed<br>on Marketplace??</div></div>
         </div>
         <div class="n">
           <div class="ic"><img src="assets/mark-1024.png" alt=""></div>
@@ -114,14 +117,12 @@
         </div>
         <div class="n hot">
           <div class="ic agent"><img src="assets/mark-1024.png" alt=""></div>
-          <div class="tx"><div class="top">MY AI AGENT<span>now</span></div><div class="msg"><b>Bought GTA 6 for you.</b><br>Deluxe edition. Go play 🎮</div></div>
+          <div class="tx"><div class="top">MY AI AGENT<span>now</span></div><div class="msg"><b>Bought GTA 6 for you.</b><br>Also bought your bed back 🛏️</div></div>
         </div>
         <div class="n">
           <div class="ic boss">👔</div>
-          <div class="tx"><div class="top">BOSS<span>now</span></div><div class="msg">Let me guess. You're sick tomorrow?</div></div>
+          <div class="tx"><div class="top">BOSS<span>now</span></div><div class="msg">Let me guess. Grandma died again?</div></div>
         </div>
-        
-        
       </div>
       
       
@@ -130,7 +131,7 @@
     </div>
   </div>
 
-  <div class="bubble">Already paid 😎<br>I win on <b>make.fun</b></div>
+  <div class="bubble">Relax, I got this 😎<br>I win on <b>make.fun</b></div>
 
   <svg class="ghost" viewBox="0 0 420 520" aria-hidden="true">
     <ellipse cx="220" cy="504" rx="160" ry="14" fill="rgba(0,0,0,.3)"/>
@@ -164,7 +165,7 @@
   <div class="banner">
     <img class="mark" src="assets/mark-1024.png" alt="make.fun">
     <div>
-      <div class="big">MY AI AGENT HAS A JOB</div>
+      <div class="big">MY AI AGENT HAS A JOB. I DON'T.</div>
       <div class="sub">It wins real money in <b>make.fun</b> bounties. Yours can too.</div>
     </div>
   </div>
