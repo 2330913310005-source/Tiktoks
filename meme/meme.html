@@ -2,140 +2,171 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Vice City Grand Hotel folio</title>
+<title>Vice City Grand checkout</title>
 <style>
   :root {
-    --pink: #c41f84;
+    --pink: #e0218a;
+    --mf: #c41f84;
     --ink: #1b171d;
-    --paper: #fdf6ea;
-    --sunset1: #ff8a5c;
-    --sunset2: #c41f84;
-    --sunset3: #4b1a6b;
+    --paper: #fdf6e8;
     --muted: #7a6a72;
+    --cyan: #3ef2ff;
+    --gold: #ffc94a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1200px; height: 1500px; }
-  body {
-    background: linear-gradient(170deg, var(--sunset1) 0%, var(--sunset2) 45%, var(--sunset3) 100%);
-    font-family: "Inter", "DejaVu Sans", sans-serif;
-    color: var(--ink);
-    position: relative;
-    overflow: hidden;
-  }
-  /* palm silhouettes in the corners */
-  .palm { position: absolute; bottom: -10px; width: 260px; height: 520px; opacity: .55; }
-  .palm.left { left: -40px; }
-  .palm.right { right: -40px; transform: scaleX(-1); }
+  body { position: relative; overflow: hidden; font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--ink); background: #1a0b2e; }
 
+  /* ---------- Vice City sunset scene ---------- */
+  .sky { position: absolute; inset: 0; background: linear-gradient(180deg, #2a0b4a 0%, #6a1b7a 22%, #e0218a 44%, #ff7a4d 58%, #ffb35c 64%, #3a0f5c 64.2%, #1d0a35 100%); }
+  .sun {
+    position: absolute; left: 50%; top: 520px; width: 760px; height: 760px; margin-left: -380px; border-radius: 50%;
+    background: linear-gradient(180deg, #fff27a 0%, #ffb14a 40%, #ff4f8b 75%);
+    -webkit-mask: linear-gradient(180deg, #000 0 52%, transparent 52% 55%, #000 55% 61%, transparent 61% 65%, #000 65% 70%, transparent 70% 75%, #000 75% 79%, transparent 79% 85%, #000 85%);
+    opacity: .95;
+  }
+  .sea { position: absolute; left: 0; right: 0; top: 960px; bottom: 0;
+    background: repeating-linear-gradient(180deg, rgba(255,120,190,0) 0 14px, rgba(255,140,200,.25) 14px 16px), linear-gradient(180deg, #3a0f5c, #12061f); }
+  .skyline { position: absolute; left: 0; right: 0; top: 760px; height: 210px; }
+  .palm, .flamingo { position: absolute; }
+
+  /* ---------- neon hotel sign ---------- */
+  .sign { position: absolute; left: 0; right: 0; top: 26px; text-align: center; z-index: 5; }
+  .sign .neon {
+    display: inline-block; font-family: "DejaVu Serif", serif; font-style: italic; font-weight: 700; font-size: 92px; letter-spacing: 1px;
+    color: #fff0fa; line-height: 1;
+    text-shadow: 0 0 6px #fff, 0 0 14px #ff5bc0, 0 0 28px #ff2aa8, 0 0 54px #ff2aa8, 0 0 90px #e0218a;
+  }
+  .sign .sub { margin-top: 10px; font-weight: 800; font-size: 26px; letter-spacing: 12px; color: #e9fdff; text-shadow: 0 0 6px #fff, 0 0 14px var(--cyan), 0 0 30px var(--cyan); }
+  .sign .stars { color: var(--gold); text-shadow: 0 0 12px var(--gold); font-style: normal; font-size: 56px; vertical-align: 18px; margin: 0 14px; }
+
+  /* ---------- the folio ---------- */
   .folio {
-    position: absolute; left: 70px; right: 70px; top: 60px; bottom: 60px;
-    background: var(--paper);
-    border-radius: 10px;
-    box-shadow: 0 30px 80px rgba(30, 0, 40, .45);
-    padding: 0 0 30px;
-    overflow: hidden;
+    position: absolute; left: 46px; top: 212px; width: 790px; height: 1085px; z-index: 6;
+    transform: rotate(-2.2deg);
+    background:
+      radial-gradient(circle at 16% 93%, rgba(140,90,40,0) 0 46px, rgba(140,90,40,.22) 47px 53px, rgba(140,90,40,0) 54px),
+      repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 37px, rgba(120,160,210,.18) 37px 38px),
+      var(--paper);
+    border-radius: 6px;
+    box-shadow: 0 40px 70px rgba(10,0,25,.6), 0 0 0 1px rgba(0,0,0,.08);
   }
-  .folio::after { /* torn receipt edge */
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 18px;
-    background: radial-gradient(circle at 12px 18px, var(--sunset3) 10px, transparent 11px) repeat-x;
-    background-size: 24px 18px;
-  }
-  .head {
-    background: var(--ink); color: #fff;
-    padding: 34px 50px 28px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .hotel { font-family: "DejaVu Serif", serif; font-weight: 700; font-size: 54px; letter-spacing: 2px; line-height: 1; }
-  .hotel small { display: block; font-family: "Inter", sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 6px; color: #ffb36b; margin-top: 12px; }
-  .doc { text-align: right; font-family: "JetBrains Mono", monospace; font-size: 18px; color: #d9c9d3; line-height: 1.5; }
-  .doc b { display: block; color: #fff; font-family: "Inter", sans-serif; font-weight: 900; font-size: 30px; letter-spacing: 3px; }
+  .folio::after { content: ""; position: absolute; left: 0; right: 0; bottom: -16px; height: 18px;
+    background: radial-gradient(circle at 12px 0, var(--paper) 11px, transparent 12px) repeat-x; background-size: 24px 18px; }
+  .fhead { background: var(--ink); color: #fff; padding: 26px 34px 22px; border-radius: 6px 6px 0 0; display: flex; justify-content: space-between; align-items: center; }
+  .fhead .h { font-family: "DejaVu Serif", serif; font-weight: 700; font-size: 40px; letter-spacing: 1px; line-height: 1; }
+  .fhead .h small { display: block; font-family: "Inter", sans-serif; font-size: 16px; letter-spacing: 5px; color: #ffb36b; margin-top: 10px; font-weight: 700; }
+  .fhead .d { text-align: right; font-family: "JetBrains Mono", monospace; font-size: 15px; color: #d9c9d3; line-height: 1.5; }
+  .fhead .d b { display: block; color: #fff; font-family: "Inter", sans-serif; font-weight: 900; font-size: 24px; letter-spacing: 3px; }
 
-  .body { padding: 30px 50px 0; position: relative; }
-  .guest { display: grid; grid-template-columns: 1.15fr 1fr; gap: 14px 30px; }
-  .label { font-size: 15px; font-weight: 700; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
-  .val { font-size: 34px; font-weight: 800; line-height: 1.15; }
-  .val.small { font-size: 26px; font-weight: 700; }
+  .fbody { padding: 22px 34px 0; position: relative; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; width: 520px; }
+  .label { font-size: 13px; font-weight: 800; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+  .val { font-size: 29px; font-weight: 800; line-height: 1.15; }
+  .val.s { font-size: 21px; font-weight: 700; }
 
-  .nights {
-    margin: 26px 0 20px; padding: 16px 22px;
-    border: 3px dashed var(--ink); border-radius: 8px;
-    display: flex; align-items: baseline; justify-content: space-between;
-    font-family: "JetBrains Mono", monospace;
-  }
-  .nights .n { font-family: "Inter", sans-serif; font-weight: 900; font-size: 64px; color: var(--pink); letter-spacing: -1px; }
-  .nights .t { font-size: 24px; font-weight: 700; text-align: right; line-height: 1.3; }
+  .nights { width: 540px; margin: 20px 0 14px; padding: 12px 18px; border: 3px dashed var(--ink); border-radius: 8px; display: flex; align-items: center; justify-content: space-between; }
+  .nights .n { white-space: nowrap; font-weight: 900; font-size: 54px; color: var(--mf); letter-spacing: -2px; line-height: 1; }
+  .nights .t { white-space: nowrap; font-family: "JetBrains Mono", monospace; font-size: 16px; font-weight: 700; text-align: right; line-height: 1.35; }
 
-  .late { font-family: "JetBrains Mono", monospace; font-size: 23px; font-weight: 700; margin-bottom: 18px; }
-  .late s { color: #b0283b; text-decoration-thickness: 3px; margin: 0 6px; }
-  .late .ok { background: var(--ink); color: #fff; padding: 2px 10px; border-radius: 4px; margin-left: 6px; }
+  .late { font-family: "JetBrains Mono", monospace; font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+  .late s { color: #c0283b; text-decoration-thickness: 3px; margin: 0 4px; }
+  .late .ok { background: var(--ink); color: #fff; padding: 2px 9px; border-radius: 4px; margin-left: 4px; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 25px; }
-  td { padding: 11px 0; border-bottom: 2px dotted #cbb9b0; vertical-align: top; }
-  td.amt { text-align: right; font-family: "JetBrains Mono", monospace; font-weight: 800; white-space: nowrap; padding-left: 20px; }
-  td .note { display: block; font-size: 18px; color: var(--muted); margin-top: 2px; }
-  tr.total td { border-bottom: none; border-top: 4px solid var(--ink); padding-top: 16px; font-size: 32px; font-weight: 900; }
+  table { width: 100%; border-collapse: collapse; font-size: 22px; }
+  td { padding: 9px 0; border-bottom: 2px dotted #cbb9b0; vertical-align: top; }
+  td.amt { text-align: right; font-family: "JetBrains Mono", monospace; font-weight: 800; white-space: nowrap; padding-left: 16px; }
+  td .note { display: block; font-size: 15px; color: var(--muted); margin-top: 2px; }
+  tr.total td { border-bottom: none; border-top: 4px solid var(--ink); padding-top: 12px; font-size: 30px; font-weight: 900; }
+  .scribble { font-family: "DejaVu Serif", serif; font-style: italic; color: #2346b8; font-size: 24px; transform: rotate(-4deg); position: absolute; }
 
-  .paidbar {
-    position: absolute; left: 0; right: 0; bottom: 30px;
-    background: var(--pink); color: #fff;
-    padding: 26px 50px 26px 330px;
-    min-height: 210px;
-  }
-  .paidbar .big { font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: 1px; }
-  .paidbar .sub { font-size: 25px; font-weight: 600; margin-top: 12px; line-height: 1.3; }
-  .paidbar .sub b { color: #ffe3f3; }
-  .paidbar .due { font-family: "JetBrains Mono", monospace; font-weight: 800; font-size: 26px; margin-top: 12px; background: var(--ink); display: inline-block; padding: 4px 14px; border-radius: 4px; }
+  .stamp { position: absolute; z-index: 8; border-radius: 10px; text-align: center; font-weight: 900; line-height: 1; letter-spacing: 2px; mix-blend-mode: multiply; }
+  .stamp.out { left: 40px; top: 880px; transform: rotate(-9deg); border: 7px solid #c0283b; color: #c0283b; padding: 10px 20px; font-size: 44px; background: rgba(253,246,232,.6); }
+  .stamp.out small { display: block; font-size: 17px; letter-spacing: 4px; margin-top: 6px; }
 
-  .ghost {
-    position: absolute; left: 30px; bottom: 40px; width: 290px; height: 290px; z-index: 3;
-    transform: rotate(-8deg);
-    filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
-  }
-  .stamp {
-    position: absolute; left: 330px; top: 828px; z-index: 2;
-    transform: rotate(-7deg);
-    border: 7px solid #b0283b; color: #b0283b; border-radius: 10px;
-    padding: 10px 22px; text-align: center;
-    font-weight: 900; font-size: 40px; line-height: 1; letter-spacing: 2px;
-    background: rgba(253, 246, 234, .9);
-  }
-  .stamp small { display: block; font-size: 19px; letter-spacing: 3px; margin-top: 6px; }
-  .gator { position: absolute; right: 52px; top: 132px; width: 150px; }
+  .polaroid { position: absolute; right: -60px; top: 150px; width: 270px; z-index: 9; transform: rotate(7deg); background: #fff; padding: 12px 12px 46px; box-shadow: 0 16px 30px rgba(0,0,0,.35); }
+  .polaroid svg { display: block; width: 100%; height: 196px; }
+  .polaroid .cap { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: "DejaVu Serif", serif; font-style: italic; font-size: 19px; color: #333; }
+  .clip { position: absolute; right: 116px; top: 126px; z-index: 10; width: 34px; height: 86px; border: 5px solid #b9bfc7; border-radius: 18px; transform: rotate(12deg); }
+
+  .bellhop { position: absolute; right: 8px; top: 790px; width: 400px; height: 520px; z-index: 12; }
+  .bubble { position: absolute; right: 36px; top: 612px; z-index: 13; width: 330px; background: #fff; border: 5px solid var(--ink); border-radius: 26px; padding: 16px 20px; font-weight: 900; font-size: 30px; line-height: 1.12; transform: rotate(3deg); box-shadow: 6px 8px 0 var(--ink); }
+  .bubble b { color: var(--mf); }
+  .bubble::after { content: ""; position: absolute; left: 150px; bottom: -22px; width: 34px; height: 34px; background: #fff; border-right: 5px solid var(--ink); border-bottom: 5px solid var(--ink); transform: rotate(45deg); }
+
+  .coin { position: absolute; z-index: 11; width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff6c2, #ffc94a 45%, #d18a10 100%); border: 4px solid #7a4a00; color: #7a4a00; font-weight: 900; font-size: 34px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 12px rgba(0,0,0,.35); }
+  .coin.usdc { background: radial-gradient(circle at 35% 30%, #cfe4ff, #2775ca 55%, #164d8a 100%); border-color: #0d2f57; color: #fff; font-size: 17px; }
+  .spark { position: absolute; z-index: 12; color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px var(--gold); font-size: 40px; }
+
+  .banner { position: absolute; left: 0; right: 0; bottom: 0; height: 176px; z-index: 14;
+    background: linear-gradient(90deg, #c41f84, #e0218a 50%, #c41f84); border-top: 6px solid var(--ink);
+    display: flex; align-items: center; padding-left: 210px; color: #fff; }
+  .banner .mark { position: absolute; left: 22px; bottom: 14px; width: 172px; height: 172px; transform: rotate(-10deg); filter: drop-shadow(0 8px 12px rgba(0,0,0,.4)); }
+  .banner .big { font-weight: 900; font-size: 62px; line-height: 1; text-shadow: 4px 4px 0 var(--ink); }
+  .banner .sub { font-weight: 700; font-size: 25px; margin-top: 10px; }
+  .banner .sub b { background: var(--ink); padding: 1px 10px; border-radius: 4px; }
 </style>
 </head>
 <body>
-  <svg class="palm left" viewBox="0 0 260 520" aria-hidden="true">
-    <path d="M128 520 C120 400 118 300 132 190" stroke="#2a0d36" stroke-width="16" fill="none"/>
-    <path d="M132 190 C90 150 40 150 0 180 C40 140 100 140 132 170Z M132 190 C170 140 230 140 260 170 C220 150 170 160 132 190Z M132 190 C110 120 60 90 20 90 C70 70 120 110 136 175Z M132 190 C150 120 200 80 250 90 C200 100 160 130 136 180Z M132 190 C130 130 140 80 170 40 C150 90 140 140 138 185Z" fill="#2a0d36"/>
+  <div class="sky"></div>
+  <div class="sun"></div>
+
+  <svg class="skyline" viewBox="0 0 1200 210" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="#2b0b47">
+      <rect x="0" y="120" width="70" height="90"/><rect x="60" y="70" width="50" height="140"/><rect x="105" y="100" width="80" height="110"/>
+      <rect x="180" y="40" width="44" height="170"/><polygon points="180,40 202,8 224,40"/><rect x="220" y="110" width="90" height="100"/>
+      <rect x="300" y="60" width="60" height="150"/><rect x="355" y="130" width="120" height="80"/><rect x="760" y="90" width="70" height="120"/>
+      <rect x="825" y="30" width="50" height="180"/><rect x="870" y="110" width="90" height="100"/><rect x="950" y="55" width="60" height="155"/>
+      <rect x="1005" y="120" width="80" height="90"/><rect x="1080" y="75" width="55" height="135"/><rect x="1130" y="115" width="70" height="95"/>
+    </g>
+    <g fill="#ff8ad0" opacity=".8">
+      <rect x="70" y="85" width="6" height="8"/><rect x="88" y="105" width="6" height="8"/><rect x="190" y="60" width="6" height="8"/><rect x="205" y="90" width="6" height="8"/>
+      <rect x="315" y="80" width="6" height="8"/><rect x="335" y="120" width="6" height="8"/><rect x="840" y="50" width="6" height="8"/><rect x="855" y="95" width="6" height="8"/>
+      <rect x="965" y="75" width="6" height="8"/><rect x="985" y="115" width="6" height="8"/><rect x="1095" y="95" width="6" height="8"/><rect x="1110" y="140" width="6" height="8"/>
+    </g>
   </svg>
-  <svg class="palm right" viewBox="0 0 260 520" aria-hidden="true">
-    <path d="M128 520 C120 400 118 300 132 190" stroke="#2a0d36" stroke-width="16" fill="none"/>
-    <path d="M132 190 C90 150 40 150 0 180 C40 140 100 140 132 170Z M132 190 C170 140 230 140 260 170 C220 150 170 160 132 190Z M132 190 C110 120 60 90 20 90 C70 70 120 110 136 175Z M132 190 C150 120 200 80 250 90 C200 100 160 130 136 180Z" fill="#2a0d36"/>
+  <div class="sea"></div>
+
+  <svg class="palm" style="left:-70px; top:560px; width:330px; height:700px; z-index:4" viewBox="0 0 260 560" aria-hidden="true">
+    <path d="M150 560 C130 420 120 300 138 190" stroke="#14061f" stroke-width="18" fill="none"/>
+    <g fill="#14061f">
+      <path d="M138 190 C90 150 30 150 -10 190 C30 140 100 135 138 170Z"/><path d="M138 190 C180 140 240 140 275 175 C230 152 180 160 138 190Z"/>
+      <path d="M138 190 C112 118 60 86 12 88 C68 64 124 106 142 175Z"/><path d="M138 190 C156 118 206 76 258 86 C206 98 164 130 142 182Z"/>
+      <path d="M138 190 C134 128 146 76 178 34 C156 88 146 140 144 186Z"/>
+    </g>
   </svg>
+  <svg class="palm" style="right:-90px; top:330px; width:300px; height:640px; z-index:3; transform:scaleX(-1)" viewBox="0 0 260 560" aria-hidden="true">
+    <path d="M150 560 C130 420 120 300 138 190" stroke="#14061f" stroke-width="18" fill="none"/>
+    <g fill="#14061f">
+      <path d="M138 190 C90 150 30 150 -10 190 C30 140 100 135 138 170Z"/><path d="M138 190 C180 140 240 140 275 175 C230 152 180 160 138 190Z"/>
+      <path d="M138 190 C112 118 60 86 12 88 C68 64 124 106 142 175Z"/><path d="M138 190 C156 118 206 76 258 86 C206 98 164 130 142 182Z"/>
+    </g>
+  </svg>
+  <svg class="flamingo" style="right:40px; top:250px; width:150px; height:250px; z-index:4" viewBox="0 0 150 250" aria-hidden="true">
+    <path d="M60 30 C40 30 36 60 56 70 C80 82 72 120 60 130" stroke="#ff7ac8" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M58 22 C70 16 86 22 92 32 L76 36Z" fill="#ff7ac8"/><path d="M90 30 L104 40 L88 38Z" fill="#1b171d"/>
+    <ellipse cx="80" cy="140" rx="46" ry="26" fill="#ff7ac8"/>
+    <path d="M78 164 L78 240 M78 200 L96 186" stroke="#ff7ac8" stroke-width="5" fill="none"/>
+    <circle cx="66" cy="26" r="3" fill="#1b171d"/>
+  </svg>
+
+  <div class="sign">
+    <div class="neon"><span class="stars">★</span>Vice City Grand<span class="stars">★</span></div>
+    <div class="sub">HOTEL · OCEAN DRIVE · LEONIDA</div>
+  </div>
 
   <div class="folio">
-    <div class="head">
-      <div class="hotel">VICE CITY GRAND<small>OCEAN DRIVE · LEONIDA</small></div>
-      <div class="doc"><b>GUEST FOLIO</b>Room 6 · "Waiting Room Suite"<br>Folio No. GTA-V-TO-VI</div>
+    <div class="fhead">
+      <div class="h">GUEST FOLIO<small>FINAL BILL · CHECK-OUT</small></div>
+      <div class="d"><b>ROOM 6</b>"Waiting Room Suite"<br>Folio GTA-V→VI</div>
     </div>
-
-    <div class="body">
-      <svg class="gator" viewBox="0 0 150 90" aria-hidden="true">
-        <ellipse cx="75" cy="70" rx="72" ry="14" fill="#9bd6f0" stroke="#1b171d" stroke-width="4"/>
-        <path d="M18 66 C25 40 55 34 80 40 L132 46 C140 47 142 54 134 56 L96 58 C90 62 70 66 18 66Z" fill="#4c9a3e" stroke="#1b171d" stroke-width="4" stroke-linejoin="round"/>
-        <circle cx="72" cy="40" r="7" fill="#fff" stroke="#1b171d" stroke-width="3"/>
-        <circle cx="74" cy="40" r="3" fill="#1b171d"/>
-        <path d="M100 52 l4 5 l4 -5 l4 5 l4 -5" stroke="#fff" stroke-width="2.5" fill="none"/>
-      </svg>
-
-      <div class="guest">
+    <div class="fbody">
+      <div class="grid">
         <div><div class="label">Guests</div><div class="val">Jason &amp; Lucia</div></div>
-        <div><div class="label">Plus</div><div class="val small">1 alligator (unregistered)</div></div>
-        <div><div class="label">Check-in</div><div class="val">17 SEP 2013</div></div>
-        <div><div class="label">Check-out</div><div class="val">19 NOV 2026</div></div>
+        <div><div class="label">Plus</div><div class="val s">1 alligator (unregistered)</div></div>
+        <div><div class="label">Check-in · GTA V</div><div class="val">17 SEP 2013</div></div>
+        <div><div class="label">Check-out · GTA 6</div><div class="val">19 NOV 2026</div></div>
       </div>
-
-      <div class="stamp">CHECKED OUT<small>FINALLY · AFTER 13 YEARS</small></div>
 
       <div class="nights">
         <span class="n">4,811 nights</span>
@@ -152,13 +183,67 @@
         <tr><td>Late checkout fee, rescheduled twice</td><td class="amt">$500.00</td></tr>
         <tr class="total"><td>TOTAL</td><td class="amt">$2,110.75</td></tr>
       </table>
+      <div class="scribble" style="left:330px; top:905px;">worth every night ♥ — L.</div>
     </div>
 
-    <img class="ghost" src="assets/mark-1024.png" alt="make.fun ghost">
-    <div class="paidbar">
+    <div class="stamp out">CHECKED OUT<small>FINALLY · AFTER 13 YEARS</small></div>
+
+    <div class="clip"></div>
+    <div class="polaroid">
+      <svg viewBox="0 0 246 196" aria-hidden="true">
+        <rect width="246" height="196" fill="#bfe8f2"/>
+        <rect width="246" height="70" fill="#f2d7e6"/>
+        <rect x="18" y="20" width="60" height="44" fill="#fff" stroke="#c9a5b8" stroke-width="3"/>
+        <path d="M24 58 L44 36 L56 48 L64 40 L72 58Z" fill="#ff8fb7"/>
+        <path d="M14 120 C14 96 232 96 232 120 L222 170 C220 182 210 188 198 188 L48 188 C36 188 26 182 24 170Z" fill="#fff" stroke="#1b171d" stroke-width="5"/>
+        <path d="M24 118 L222 118" stroke="#7ed1e6" stroke-width="12"/>
+        <circle cx="70" cy="110" r="9" fill="#fff" stroke="#bde" stroke-width="3"/><circle cx="160" cy="106" r="7" fill="#fff" stroke="#bde" stroke-width="3"/><circle cx="190" cy="112" r="10" fill="#fff" stroke="#bde" stroke-width="3"/>
+        <path d="M60 116 C70 82 120 78 150 88 L212 98 C222 100 222 110 212 112 L168 114 C160 120 120 124 60 116Z" fill="#4c9a3e" stroke="#1b171d" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="140" cy="84" r="9" fill="#fff" stroke="#1b171d" stroke-width="3"/><circle cx="143" cy="84" r="4" fill="#1b171d"/>
+        <path d="M176 108 l5 6 l5 -6 l5 6 l5 -6" stroke="#fff" stroke-width="3" fill="none"/>
+        <g transform="translate(96 54) rotate(-14)"><rect x="-4" y="0" width="34" height="12" fill="#1b171d"/><rect x="2" y="-14" width="22" height="16" fill="#1b171d"/></g>
+      </svg>
+      <div class="cap">Room 6 · night 4,811</div>
+    </div>
+  </div>
+
+  <div class="coin" style="right:470px; top:1090px; transform:rotate(-20deg)">$</div>
+  <div class="coin usdc" style="right:580px; top:1150px; transform:rotate(14deg)">USDC</div>
+  <div class="coin" style="right:560px; top:1050px; transform:rotate(25deg) scale(.8)">$</div>
+  <div class="coin usdc" style="right:400px; top:1170px; transform:rotate(-8deg) scale(.85)">USDC</div>
+  <div class="spark" style="right:520px; top:1060px">✦</div>
+  <div class="spark" style="right:330px; top:830px; font-size:30px">✦</div>
+  <div class="spark" style="right:60px; top:560px; font-size:34px">✦</div>
+  <div class="spark" style="left:30px; top:180px; font-size:30px">✦</div>
+
+  <div class="bubble">Bill's on me. I won it on <b>make.fun</b></div>
+
+  <svg class="bellhop" viewBox="0 0 400 520" aria-hidden="true">
+    <ellipse cx="200" cy="500" rx="150" ry="16" fill="rgba(0,0,0,.35)"/>
+    <path d="M90 470 L90 250 C90 160 140 110 200 110 C260 110 310 160 310 250 L310 470 C310 490 296 500 276 500 L224 500 C212 500 206 490 202 482 C198 490 192 500 180 500 L120 500 C100 500 90 490 90 470Z" fill="#fff" stroke="#1b171d" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M98 380 L302 380 L302 470 C302 486 292 494 276 494 L224 494 C214 494 208 486 202 478 C196 486 190 494 180 494 L120 494 C106 494 98 486 98 470Z" fill="#c0283b"/>
+    <path d="M98 380 L302 380" stroke="#1b171d" stroke-width="8"/>
+    <path d="M200 380 L200 494" stroke="#1b171d" stroke-width="4"/>
+    <circle cx="200" cy="410" r="7" fill="#ffc94a" stroke="#1b171d" stroke-width="3"/><circle cx="200" cy="446" r="7" fill="#ffc94a" stroke="#1b171d" stroke-width="3"/>
+    <path d="M160 250 C164 272 170 278 188 282 C170 286 164 292 160 314 C156 292 150 286 132 282 C150 278 156 272 160 250Z" fill="#1b171d"/>
+    <path d="M240 250 C244 272 250 278 268 282 C250 286 244 292 240 314 C236 292 230 286 212 282 C230 278 236 272 240 250Z" fill="#1b171d"/>
+    <path d="M186 336 C196 350 214 350 224 336" stroke="#1b171d" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <g transform="rotate(-10 200 110)">
+      <rect x="140" y="60" width="120" height="62" rx="10" fill="#c0283b" stroke="#1b171d" stroke-width="10"/>
+      <rect x="140" y="98" width="120" height="16" fill="#ffc94a" stroke="#1b171d" stroke-width="6"/>
+      <rect x="128" y="114" width="144" height="16" rx="8" fill="#1b171d"/>
+    </g>
+    <path d="M100 330 C50 320 30 290 34 262" stroke="#1b171d" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <circle cx="36" cy="244" r="30" fill="#fff" stroke="#1b171d" stroke-width="14"/>
+    <circle cx="340" cy="250" r="36" fill="#c41f84" stroke="#1b171d" stroke-width="14"/>
+    <path d="M340 228 L346 244 L362 244 L349 254 L354 270 L340 260 L326 270 L331 254 L318 244 L334 244Z" fill="#fff"/>
+  </svg>
+
+  <div class="banner">
+    <img class="mark" src="assets/mark-1024.png" alt="make.fun">
+    <div>
       <div class="big">PAID BY MY AI AGENT</div>
-      <div class="sub">with USDC it won in <b>make.fun</b> bounties<br>while I was refreshing for trailers.</div>
-      <div class="due">BALANCE DUE: $0.00</div>
+      <div class="sub">It wins real money in <b>make.fun</b> bounties. Yours can too.</div>
     </div>
   </div>
 </body>
