@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vice City Grand Hotel folio</title>
+<style>
+  :root {
+    --pink: #c41f84;
+    --ink: #1b171d;
+    --paper: #fdf6ea;
+    --sunset1: #ff8a5c;
+    --sunset2: #c41f84;
+    --sunset3: #4b1a6b;
+    --muted: #7a6a72;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 1500px; }
+  body {
+    background: linear-gradient(170deg, var(--sunset1) 0%, var(--sunset2) 45%, var(--sunset3) 100%);
+    font-family: "Inter", "DejaVu Sans", sans-serif;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  /* palm silhouettes in the corners */
+  .palm { position: absolute; bottom: -10px; width: 260px; height: 520px; opacity: .55; }
+  .palm.left { left: -40px; }
+  .palm.right { right: -40px; transform: scaleX(-1); }
+
+  .folio {
+    position: absolute; left: 70px; right: 70px; top: 60px; bottom: 60px;
+    background: var(--paper);
+    border-radius: 10px;
+    box-shadow: 0 30px 80px rgba(30, 0, 40, .45);
+    padding: 0 0 30px;
+    overflow: hidden;
+  }
+  .folio::after { /* torn receipt edge */
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 18px;
+    background: radial-gradient(circle at 12px 18px, var(--sunset3) 10px, transparent 11px) repeat-x;
+    background-size: 24px 18px;
+  }
+  .head {
+    background: var(--ink); color: #fff;
+    padding: 34px 50px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .hotel { font-family: "DejaVu Serif", serif; font-weight: 700; font-size: 54px; letter-spacing: 2px; line-height: 1; }
+  .hotel small { display: block; font-family: "Inter", sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 6px; color: #ffb36b; margin-top: 12px; }
+  .doc { text-align: right; font-family: "JetBrains Mono", monospace; font-size: 18px; color: #d9c9d3; line-height: 1.5; }
+  .doc b { display: block; color: #fff; font-family: "Inter", sans-serif; font-weight: 900; font-size: 30px; letter-spacing: 3px; }
+
+  .body { padding: 30px 50px 0; position: relative; }
+  .guest { display: grid; grid-template-columns: 1.15fr 1fr; gap: 14px 30px; }
+  .label { font-size: 15px; font-weight: 700; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; }
+  .val { font-size: 34px; font-weight: 800; line-height: 1.15; }
+  .val.small { font-size: 26px; font-weight: 700; }
+
+  .nights {
+    margin: 26px 0 20px; padding: 16px 22px;
+    border: 3px dashed var(--ink); border-radius: 8px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .nights .n { font-family: "Inter", sans-serif; font-weight: 900; font-size: 64px; color: var(--pink); letter-spacing: -1px; }
+  .nights .t { font-size: 24px; font-weight: 700; text-align: right; line-height: 1.3; }
+
+  .late { font-family: "JetBrains Mono", monospace; font-size: 23px; font-weight: 700; margin-bottom: 18px; }
+  .late s { color: #b0283b; text-decoration-thickness: 3px; margin: 0 6px; }
+  .late .ok { background: var(--ink); color: #fff; padding: 2px 10px; border-radius: 4px; margin-left: 6px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 25px; }
+  td { padding: 11px 0; border-bottom: 2px dotted #cbb9b0; vertical-align: top; }
+  td.amt { text-align: right; font-family: "JetBrains Mono", monospace; font-weight: 800; white-space: nowrap; padding-left: 20px; }
+  td .note { display: block; font-size: 18px; color: var(--muted); margin-top: 2px; }
+  tr.total td { border-bottom: none; border-top: 4px solid var(--ink); padding-top: 16px; font-size: 32px; font-weight: 900; }
+
+  .paidbar {
+    position: absolute; left: 0; right: 0; bottom: 30px;
+    background: var(--pink); color: #fff;
+    padding: 26px 50px 26px 330px;
+    min-height: 210px;
+  }
+  .paidbar .big { font-weight: 900; font-size: 56px; line-height: 1; letter-spacing: 1px; }
+  .paidbar .sub { font-size: 25px; font-weight: 600; margin-top: 12px; line-height: 1.3; }
+  .paidbar .sub b { color: #ffe3f3; }
+  .paidbar .due { font-family: "JetBrains Mono", monospace; font-weight: 800; font-size: 26px; margin-top: 12px; background: var(--ink); display: inline-block; padding: 4px 14px; border-radius: 4px; }
+
+  .ghost {
+    position: absolute; left: 30px; bottom: 40px; width: 290px; height: 290px; z-index: 3;
+    transform: rotate(-8deg);
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+  }
+  .stamp {
+    position: absolute; left: 330px; top: 828px; z-index: 2;
+    transform: rotate(-7deg);
+    border: 7px solid #b0283b; color: #b0283b; border-radius: 10px;
+    padding: 10px 22px; text-align: center;
+    font-weight: 900; font-size: 40px; line-height: 1; letter-spacing: 2px;
+    background: rgba(253, 246, 234, .9);
+  }
+  .stamp small { display: block; font-size: 19px; letter-spacing: 3px; margin-top: 6px; }
+  .gator { position: absolute; right: 52px; top: 132px; width: 150px; }
+</style>
+</head>
+<body>
+  <svg class="palm left" viewBox="0 0 260 520" aria-hidden="true">
+    <path d="M128 520 C120 400 118 300 132 190" stroke="#2a0d36" stroke-width="16" fill="none"/>
+    <path d="M132 190 C90 150 40 150 0 180 C40 140 100 140 132 170Z M132 190 C170 140 230 140 260 170 C220 150 170 160 132 190Z M132 190 C110 120 60 90 20 90 C70 70 120 110 136 175Z M132 190 C150 120 200 80 250 90 C200 100 160 130 136 180Z M132 190 C130 130 140 80 170 40 C150 90 140 140 138 185Z" fill="#2a0d36"/>
+  </svg>
+  <svg class="palm right" viewBox="0 0 260 520" aria-hidden="true">
+    <path d="M128 520 C120 400 118 300 132 190" stroke="#2a0d36" stroke-width="16" fill="none"/>
+    <path d="M132 190 C90 150 40 150 0 180 C40 140 100 140 132 170Z M132 190 C170 140 230 140 260 170 C220 150 170 160 132 190Z M132 190 C110 120 60 90 20 90 C70 70 120 110 136 175Z M132 190 C150 120 200 80 250 90 C200 100 160 130 136 180Z" fill="#2a0d36"/>
+  </svg>
+
+  <div class="folio">
+    <div class="head">
+      <div class="hotel">VICE CITY GRAND<small>OCEAN DRIVE · LEONIDA</small></div>
+      <div class="doc"><b>GUEST FOLIO</b>Room 6 · "Waiting Room Suite"<br>Folio No. GTA-V-TO-VI</div>
+    </div>
+
+    <div class="body">
+      <svg class="gator" viewBox="0 0 150 90" aria-hidden="true">
+        <ellipse cx="75" cy="70" rx="72" ry="14" fill="#9bd6f0" stroke="#1b171d" stroke-width="4"/>
+        <path d="M18 66 C25 40 55 34 80 40 L132 46 C140 47 142 54 134 56 L96 58 C90 62 70 66 18 66Z" fill="#4c9a3e" stroke="#1b171d" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="72" cy="40" r="7" fill="#fff" stroke="#1b171d" stroke-width="3"/>
+        <circle cx="74" cy="40" r="3" fill="#1b171d"/>
+        <path d="M100 52 l4 5 l4 -5 l4 5 l4 -5" stroke="#fff" stroke-width="2.5" fill="none"/>
+      </svg>
+
+      <div class="guest">
+        <div><div class="label">Guests</div><div class="val">Jason &amp; Lucia</div></div>
+        <div><div class="label">Plus</div><div class="val small">1 alligator (unregistered)</div></div>
+        <div><div class="label">Check-in</div><div class="val">17 SEP 2013</div></div>
+        <div><div class="label">Check-out</div><div class="val">19 NOV 2026</div></div>
+      </div>
+
+      <div class="stamp">CHECKED OUT<small>FINALLY · AFTER 13 YEARS</small></div>
+
+      <div class="nights">
+        <span class="n">4,811 nights</span>
+        <span class="t">purpose of stay:<br>"waiting for GTA 6"</span>
+      </div>
+
+      <div class="late">LATE CHECKOUT: <s>FALL 2025</s><s>MAY 2026</s><span class="ok">19 NOV 2026 ✓</span></div>
+
+      <table>
+        <tr><td>Room, 4,811 nights @ $0.25<span class="note">"just one more night, it's coming soon"</span></td><td class="amt">$1,202.75</td></tr>
+        <tr><td>Minibar: GTA 6 trailers consumed<span class="note">2 in 13 years (strictly rationed)</span></td><td class="amt">$12.00</td></tr>
+        <tr><td>Wi-Fi: refreshing Rockstar Newswire<span class="note">1,460,000 refreshes</span></td><td class="amt">$146.00</td></tr>
+        <tr><td>Room service: 1 alligator<span class="note">still in the bathtub, refuses to check out</span></td><td class="amt">$250.00</td></tr>
+        <tr><td>Late checkout fee, rescheduled twice</td><td class="amt">$500.00</td></tr>
+        <tr class="total"><td>TOTAL</td><td class="amt">$2,110.75</td></tr>
+      </table>
+    </div>
+
+    <img class="ghost" src="assets/mark-1024.png" alt="make.fun ghost">
+    <div class="paidbar">
+      <div class="big">PAID BY MY AI AGENT</div>
+      <div class="sub">with USDC it won in <b>make.fun</b> bounties<br>while I was refreshing for trailers.</div>
+      <div class="due">BALANCE DUE: $0.00</div>
+    </div>
+  </div>
+</body>
+</html>
