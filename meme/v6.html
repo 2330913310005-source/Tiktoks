@@ -88,7 +88,7 @@
 
   .stamp { position: absolute; z-index: 8; border-radius: 10px; text-align: center; font-weight: 900; line-height: 1; letter-spacing: 2px; mix-blend-mode: multiply; }
   .stamp.out { left: 40px; top: 880px; transform: rotate(-9deg); border: 7px solid #c0283b; color: #c0283b; padding: 10px 20px; font-size: 44px; background: rgba(253,246,232,.6); }
-  .stamp.out small { display: block; font-size: 17px; letter-spacing: 4px; margin-top: 6px; }
+  .inkstamp { position: absolute; z-index: 8; left: 48px; top: 878px; width: 460px; height: 150px; transform: rotate(-8deg); mix-blend-mode: multiply; opacity: .92; }
 
   .polaroid { position: absolute; right: -50px; top: 150px; width: 236px; z-index: 9; transform: rotate(7deg); background: #fff; padding: 12px 12px 46px; box-shadow: 0 16px 30px rgba(0,0,0,.35); }
   .polaroid svg { display: block; width: 100%; height: 164px; }
@@ -141,6 +141,7 @@
       <path d="M138 190 C134 128 146 76 178 34 C156 88 146 140 144 186Z"/>
     </g>
   </svg>
+  <div style="position:absolute; left:1104px; top:930px; width:24px; height:420px; background:#14061f; border-radius:10px; z-index:3; transform:rotate(-1.5deg)"></div>
   <svg class="palm" style="right:-90px; top:330px; width:300px; height:640px; z-index:3; transform:scaleX(-1)" viewBox="0 0 260 560" aria-hidden="true">
     <path d="M150 560 C130 420 120 300 138 190" stroke="#14061f" stroke-width="18" fill="none"/>
     <g fill="#14061f">
@@ -203,7 +204,27 @@
       <div class="scribble" style="left:380px; top:900px;">worth every night ♥ — L.</div>
     </div>
 
-    <div class="stamp out">CHECKED OUT<small>FINALLY · AFTER 13 YEARS</small></div>
+    <svg class="inkstamp" viewBox="0 0 520 170" aria-hidden="true">
+      <defs>
+        <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.4 1.8" result="holes"/>
+          <feComposite in="SourceGraphic" in2="holes" operator="in" result="worn"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="5" result="blot"/>
+          <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1 1.65" result="fade"/>
+          <feComposite in="worn" in2="fade" operator="in" result="inked"/>
+          <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="1" seed="3" result="wob"/>
+          <feDisplacementMap in="inked" in2="wob" scale="2.5"/>
+        </filter>
+      </defs>
+      <g filter="url(#ink)" fill="none" stroke="#c4162e">
+        <rect x="8" y="8" width="504" height="154" rx="14" stroke-width="8"/>
+        <rect x="21" y="21" width="478" height="128" rx="8" stroke-width="2.5"/>
+        <text x="260" y="92" text-anchor="middle" fill="#c4162e" stroke="none" font-family="Inter, sans-serif" font-weight="900" font-size="58" textLength="430" lengthAdjust="spacingAndGlyphs">CHECKED OUT</text>
+        <line x1="60" y1="108" x2="460" y2="108" stroke-width="2.5"/>
+        <text x="260" y="136" text-anchor="middle" fill="#c4162e" stroke="none" font-family="Inter, sans-serif" font-weight="900" font-size="19" letter-spacing="4">★ FINALLY · AFTER 13 YEARS ★</text>
+      </g>
+    </svg>
 
     <div class="clip"></div>
     <div class="polaroid">
@@ -224,10 +245,7 @@
     </div>
   </div>
 
-  <div class="coin" style="right:392px; top:1072px; transform:rotate(14deg) scale(.85)">$</div>
-  <div class="coin usdc" style="right:468px; top:1118px; transform:rotate(-8deg) scale(.9)">USDC</div>
-  <div class="coin" style="right:548px; top:1150px; transform:rotate(-18deg)">$</div>
-  <div class="spark" style="right:440px; top:1060px; font-size:30px">✦</div>
+  
   <div class="spark" style="left:30px; top:180px; font-size:30px">✦</div>
 
   <div class="bubble">Bill's on me. I won it on <b>make.fun</b></div>
