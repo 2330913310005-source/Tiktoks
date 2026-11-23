@@ -33,7 +33,7 @@
   /* ---------- neon hotel sign ---------- */
   .sign { position: absolute; left: 0; right: 0; top: 26px; text-align: center; z-index: 5; }
   .sign .neon {
-    display: inline-block; font-family: "DejaVu Serif", serif; font-style: italic; font-weight: 700; font-size: 92px; letter-spacing: 1px;
+    display: inline-block; font-family: "DejaVu Serif", serif; font-style: italic; font-weight: 700; font-size: 76px; letter-spacing: 1px;
     color: #fff0fa; line-height: 1;
     text-shadow: 0 0 6px #fff, 0 0 14px #ff5bc0, 0 0 28px #ff2aa8, 0 0 54px #ff2aa8, 0 0 90px #e0218a;
   }
@@ -45,8 +45,7 @@
     position: absolute; left: 46px; top: 212px; width: 790px; height: 1085px; z-index: 6;
     transform: rotate(-2.2deg);
     background:
-      radial-gradient(circle at 16% 93%, rgba(140,90,40,0) 0 46px, rgba(140,90,40,.22) 47px 53px, rgba(140,90,40,0) 54px),
-      repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 37px, rgba(120,160,210,.18) 37px 38px),
+            repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 37px, rgba(120,160,210,.18) 37px 38px),
       var(--paper);
     border-radius: 6px;
     box-shadow: 0 40px 70px rgba(10,0,25,.6), 0 0 0 1px rgba(0,0,0,.08);
@@ -73,21 +72,30 @@
   .late s { color: #c0283b; text-decoration-thickness: 3px; margin: 0 4px; }
   .late .ok { background: var(--ink); color: #fff; padding: 2px 9px; border-radius: 4px; margin-left: 4px; }
 
-  table { width: 100%; border-collapse: collapse; font-size: 22px; }
-  td { padding: 9px 0; border-bottom: 2px dotted #cbb9b0; vertical-align: top; }
+  table { width: 100%; border-collapse: collapse; font-size: 21px; }
+  td { padding: 7px 0; border-bottom: 2px dotted #cbb9b0; vertical-align: top; }
   td.amt { text-align: right; font-family: "JetBrains Mono", monospace; font-weight: 800; white-space: nowrap; padding-left: 16px; }
-  td .note { display: block; font-size: 15px; color: var(--muted); margin-top: 2px; }
+  td .note { display: block; font-size: 14.5px; color: var(--muted); margin-top: 2px; }
   tr.total td { border-bottom: none; border-top: 4px solid var(--ink); padding-top: 12px; font-size: 30px; font-weight: 900; }
   .scribble { font-family: "DejaVu Serif", serif; font-style: italic; color: #2346b8; font-size: 24px; transform: rotate(-4deg); position: absolute; }
 
+  .hud { position: absolute; right: 22px; top: 14px; z-index: 15; text-align: right; font-family: "Inter", sans-serif; }
+  .hud .stars { font-size: 34px; letter-spacing: 2px; color: #fff; -webkit-text-stroke: 2px #000; text-shadow: 0 0 6px rgba(0,0,0,.6); }
+  .hud .stars .off { color: rgba(255,255,255,.25); }
+  .hud .money { font-weight: 900; font-size: 34px; color: #6fd36a; -webkit-text-stroke: 1.5px #0a2a08; letter-spacing: 1px; }
+  .hud .minus { color: #ff4d4d; -webkit-text-stroke: 1.5px #3a0000; font-size: 24px; display: block; }
+  .mission { position: absolute; z-index: 9; left: 20px; top: 860px; transform: rotate(-6deg); text-align: center; width: 520px; }
+  .mission .t { font-family: "Inter", sans-serif; font-style: italic; font-weight: 900; font-size: 70px; line-height: .95; color: #ffd23f; -webkit-text-stroke: 3px #1b0f00; letter-spacing: -1px;
+    text-shadow: 4px 5px 0 #1b0f00, 0 0 24px rgba(255,210,63,.55); }
+  .mission .s { display: inline-block; margin-top: 10px; font-weight: 800; font-size: 21px; color: #fff; background: rgba(27,15,0,.88); padding: 6px 16px; border-radius: 4px; letter-spacing: 1px; }
   .stamp { position: absolute; z-index: 8; border-radius: 10px; text-align: center; font-weight: 900; line-height: 1; letter-spacing: 2px; mix-blend-mode: multiply; }
   .stamp.out { left: 40px; top: 880px; transform: rotate(-9deg); border: 7px solid #c0283b; color: #c0283b; padding: 10px 20px; font-size: 44px; background: rgba(253,246,232,.6); }
   .stamp.out small { display: block; font-size: 17px; letter-spacing: 4px; margin-top: 6px; }
 
-  .polaroid { position: absolute; right: -60px; top: 150px; width: 270px; z-index: 9; transform: rotate(7deg); background: #fff; padding: 12px 12px 46px; box-shadow: 0 16px 30px rgba(0,0,0,.35); }
-  .polaroid svg { display: block; width: 100%; height: 196px; }
+  .polaroid { position: absolute; right: -66px; top: 112px; width: 250px; z-index: 9; transform: rotate(7deg); background: #fff; padding: 12px 12px 46px; box-shadow: 0 16px 30px rgba(0,0,0,.35); }
+  .polaroid svg { display: block; width: 100%; height: 180px; }
   .polaroid .cap { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-family: "DejaVu Serif", serif; font-style: italic; font-size: 19px; color: #333; }
-  .clip { position: absolute; right: 116px; top: 126px; z-index: 10; width: 34px; height: 86px; border: 5px solid #b9bfc7; border-radius: 18px; transform: rotate(12deg); }
+  .clip { position: absolute; right: 100px; top: 88px; z-index: 10; width: 34px; height: 86px; border: 5px solid #b9bfc7; border-radius: 18px; transform: rotate(12deg); }
 
   .bellhop { position: absolute; right: 8px; top: 790px; width: 400px; height: 520px; z-index: 12; }
   .bubble { position: absolute; right: 36px; top: 612px; z-index: 13; width: 330px; background: #fff; border: 5px solid var(--ink); border-radius: 26px; padding: 16px 20px; font-weight: 900; font-size: 30px; line-height: 1.12; transform: rotate(3deg); box-shadow: 6px 8px 0 var(--ink); }
@@ -150,15 +158,20 @@
     <circle cx="66" cy="26" r="3" fill="#1b171d"/>
   </svg>
 
-  <div class="sign">
-    <div class="neon"><span class="stars">★</span>Vice City Grand<span class="stars">★</span></div>
-    <div class="sub">HOTEL · OCEAN DRIVE · LEONIDA</div>
+  <div class="hud">
+    <div class="stars">★★★★★<span class="off">★</span></div>
+    <div class="money">$0.00<span class="minus">−$2,486.75 · BILL PAID</span></div>
+  </div>
+
+  <div class="sign" style="top:36px">
+    <div class="neon" style="margin-right:250px"><span class="stars">★</span>Vice City Grand</div>
+    <div class="sub" style="margin-right:250px; letter-spacing:9px">HOTEL · OCEAN DRIVE · LEONIDA</div>
   </div>
 
   <div class="folio">
     <div class="fhead">
       <div class="h">GUEST FOLIO<small>FINAL BILL · CHECK-OUT</small></div>
-      <div class="d"><b>ROOM 6</b>"Waiting Room Suite"<br>Folio GTA-V→VI</div>
+      <div class="d" style="margin-right:150px"><b>ROOM 6</b>"Waiting Room Suite"</div>
     </div>
     <div class="fbody">
       <div class="grid">
@@ -173,20 +186,20 @@
         <span class="t">purpose of stay:<br>"waiting for GTA 6"</span>
       </div>
 
-      <div class="late">LATE CHECKOUT: <s>FALL 2025</s><s>MAY 2026</s><span class="ok">19 NOV 2026 ✓</span></div>
-
+      
       <table>
-        <tr><td>Room, 4,811 nights @ $0.25<span class="note">"just one more night, it's coming soon"</span></td><td class="amt">$1,202.75</td></tr>
-        <tr><td>Minibar: GTA 6 trailers consumed<span class="note">2 in 13 years (strictly rationed)</span></td><td class="amt">$12.00</td></tr>
-        <tr><td>Wi-Fi: refreshing Rockstar Newswire<span class="note">1,460,000 refreshes</span></td><td class="amt">$146.00</td></tr>
+        <tr><td>Room, 4,811 nights @ $0.25<span class="note">"just one more night, it's coming next year"</span></td><td class="amt">$1,202.75</td></tr>
+        <tr><td>Crib → bunk bed → gaming chair<span class="note">kid born night 1. Now 13. Still too young for GTA 6</span></td><td class="amt">$389.00</td></tr>
+        <tr><td>Minibar: GTA 6 trailers<span class="note">2 in 13 years (strictly rationed)</span></td><td class="amt">$12.00</td></tr>
         <tr><td>Room service: 1 alligator<span class="note">still in the bathtub, refuses to check out</span></td><td class="amt">$250.00</td></tr>
-        <tr><td>Late checkout fee, rescheduled twice</td><td class="amt">$500.00</td></tr>
-        <tr class="total"><td>TOTAL</td><td class="amt">$2,110.75</td></tr>
+        <tr><td>Damage: Florida Man<span class="note">not our guest. he just walked in</span></td><td class="amt">$133.00</td></tr>
+        <tr><td>Late checkout, moved twice<span class="note"><s>Fall 2025</s> → <s>May 2026</s> → 19 Nov 2026 ✓</span></td><td class="amt">$500.00</td></tr>
+        <tr class="total"><td>TOTAL</td><td class="amt">$2,486.75</td></tr>
       </table>
-      <div class="scribble" style="left:330px; top:905px;">worth every night ♥ — L.</div>
+      
     </div>
 
-    <div class="stamp out">CHECKED OUT<small>FINALLY · AFTER 13 YEARS</small></div>
+    <div class="mission"><div class="t">MISSION PASSED</div><div class="s">CHECKED OUT AFTER 13 YEARS</div></div>
 
     <div class="clip"></div>
     <div class="polaroid">
@@ -220,23 +233,24 @@
 
   <svg class="bellhop" viewBox="0 0 400 520" aria-hidden="true">
     <ellipse cx="200" cy="500" rx="150" ry="16" fill="rgba(0,0,0,.35)"/>
-    <path d="M90 470 L90 250 C90 160 140 110 200 110 C260 110 310 160 310 250 L310 470 C310 490 296 500 276 500 L224 500 C212 500 206 490 202 482 C198 490 192 500 180 500 L120 500 C100 500 90 490 90 470Z" fill="#fff" stroke="#1b171d" stroke-width="16" stroke-linejoin="round"/>
-    <path d="M98 380 L302 380 L302 470 C302 486 292 494 276 494 L224 494 C214 494 208 486 202 478 C196 486 190 494 180 494 L120 494 C106 494 98 486 98 470Z" fill="#c0283b"/>
-    <path d="M98 380 L302 380" stroke="#1b171d" stroke-width="8"/>
-    <path d="M200 380 L200 494" stroke="#1b171d" stroke-width="4"/>
-    <circle cx="200" cy="410" r="7" fill="#ffc94a" stroke="#1b171d" stroke-width="3"/><circle cx="200" cy="446" r="7" fill="#ffc94a" stroke="#1b171d" stroke-width="3"/>
-    <path d="M160 250 C164 272 170 278 188 282 C170 286 164 292 160 314 C156 292 150 286 132 282 C150 278 156 272 160 250Z" fill="#1b171d"/>
-    <path d="M240 250 C244 272 250 278 268 282 C250 286 244 292 240 314 C236 292 230 286 212 282 C230 278 236 272 240 250Z" fill="#1b171d"/>
-    <path d="M186 336 C196 350 214 350 224 336" stroke="#1b171d" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M128 380 C84 392 64 420 66 446 C68 470 94 478 132 474" fill="#fff" stroke="#1b171d" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M124 470 L124 240 C124 152 172 110 222 110 C274 110 314 150 318 214 L318 470 C318 488 306 498 288 498 L234 498 C224 498 218 490 214 482 C210 490 204 498 194 498 L148 498 C134 498 124 488 124 470Z" fill="#fff" stroke="#1b171d" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M132 386 L310 386 L310 470 C310 484 300 490 288 490 L234 490 C226 490 220 484 214 476 C208 484 202 490 194 490 L148 490 C138 490 132 484 132 470Z" fill="#c0283b"/>
+    <path d="M132 386 L310 386" stroke="#1b171d" stroke-width="8"/>
+    <path d="M214 386 L214 476" stroke="#1b171d" stroke-width="4"/>
+    <circle cx="214" cy="414" r="7" fill="#ffc94a" stroke="#1b171d" stroke-width="3"/><circle cx="214" cy="448" r="7" fill="#ffc94a" stroke="#1b171d" stroke-width="3"/>
+    <path d="M100 420 L100 452" stroke="#1b171d" stroke-width="10" stroke-linecap="round"/>
+    <path d="M178 250 C182 272 188 278 206 282 C188 286 182 292 178 314 C174 292 168 286 150 282 C168 278 174 272 178 250Z" fill="#1b171d"/>
+    <path d="M254 250 C258 272 264 278 282 282 C264 286 258 292 254 314 C250 292 244 286 226 282 C244 278 250 272 254 250Z" fill="#1b171d"/>
+    <path d="M198 336 C208 350 226 350 236 336" stroke="#1b171d" stroke-width="8" fill="none" stroke-linecap="round"/>
     <g transform="rotate(-10 200 110)">
       <rect x="140" y="60" width="120" height="62" rx="10" fill="#c0283b" stroke="#1b171d" stroke-width="10"/>
       <rect x="140" y="98" width="120" height="16" fill="#ffc94a" stroke="#1b171d" stroke-width="6"/>
       <rect x="128" y="114" width="144" height="16" rx="8" fill="#1b171d"/>
     </g>
-    <path d="M100 330 C50 320 30 290 34 262" stroke="#1b171d" stroke-width="16" fill="none" stroke-linecap="round"/>
-    <circle cx="36" cy="244" r="30" fill="#fff" stroke="#1b171d" stroke-width="14"/>
-    <circle cx="340" cy="250" r="36" fill="#c41f84" stroke="#1b171d" stroke-width="14"/>
-    <path d="M340 228 L346 244 L362 244 L349 254 L354 270 L340 260 L326 270 L331 254 L318 244 L334 244Z" fill="#fff"/>
+    <circle cx="336" cy="262" r="42" fill="#c41f84" stroke="#1b171d" stroke-width="14"/>
+    <path d="M336 236 L343 254 L362 254 L347 266 L353 285 L336 274 L319 285 L325 266 L310 254 L329 254Z" fill="#fff"/>
+    <circle cx="330" cy="336" r="30" fill="#fff" stroke="#1b171d" stroke-width="14"/>
   </svg>
 
   <div class="banner">
