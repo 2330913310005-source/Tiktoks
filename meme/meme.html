@@ -73,11 +73,7 @@
   .settled { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 16px; font-weight: 700; color: #3a2a3a; }
   .settled b { color: var(--mf); }
   .settled .sig { font-family: "DejaVu Serif", serif; font-style: italic; font-size: 22px; color: #2346b8; border-bottom: 1px solid #8a6a2a; padding: 0 6px; }
-  .mission { position: absolute; z-index: 8; left: 70px; top: 1102px; transform: rotate(-6deg); text-align: center; }
-  .mission .t { font-style: italic; font-weight: 900; font-size: 80px; line-height: .95; color: var(--gold); -webkit-text-stroke: 3px #1b0f00; letter-spacing: -1px;
-    text-shadow: 5px 6px 0 #1b0f00; }
-  .mission .s { display: inline-block; margin-top: 10px; font-weight: 800; font-size: 22px; color: #fff; background: rgba(27,15,0,.9); padding: 6px 16px; border-radius: 4px; letter-spacing: 1px; }
-
+  .stamp { position: absolute; z-index: 8; left: 120px; top: 1046px; width: 500px; height: 158px; transform: rotate(-6deg); mix-blend-mode: multiply; }
   .bellhop { position: absolute; right: 70px; top: 776px; width: 400px; height: 520px; z-index: 6; }
   .bubble { position: absolute; right: 40px; top: 560px; z-index: 7; width: 380px; background: #fff; border: 5px solid var(--ink); border-radius: 26px; padding: 18px 22px; font-weight: 900; font-size: 32px; line-height: 1.12; transform: rotate(3deg); box-shadow: 6px 8px 0 var(--ink); }
   .bubble b { color: var(--mf); }
@@ -462,7 +458,25 @@
     </div>
   </div>
 
-  <div class="mission"><div class="t">MISSION PASSED</div><div class="s">BILL PAID · $0.00 DUE</div></div>
+  <svg class="stamp" viewBox="0 0 600 190" aria-hidden="true">
+    <defs>
+      <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.3 1.75" result="holes"/>
+        <feComposite in="SourceGraphic" in2="holes" operator="in" result="worn"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="9" result="blot"/>
+        <feColorMatrix in="blot" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.9 1.6" result="fade"/>
+        <feComposite in="worn" in2="fade" operator="in"/>
+      </filter>
+    </defs>
+    <g filter="url(#ink)" fill="none" stroke="#c4162e">
+      <rect x="8" y="8" width="584" height="174" rx="16" stroke-width="9"/>
+      <rect x="22" y="22" width="556" height="146" rx="9" stroke-width="3"/>
+      <text x="300" y="106" text-anchor="middle" fill="#c4162e" stroke="none" font-family="Inter, sans-serif" font-weight="900" font-style="italic" font-size="66" letter-spacing="0" textLength="500" lengthAdjust="spacingAndGlyphs">MISSION PASSED</text>
+      <line x1="60" y1="124" x2="540" y2="124" stroke-width="3"/>
+      <text x="300" y="155" text-anchor="middle" fill="#c4162e" stroke="none" font-family="Inter, sans-serif" font-weight="900" font-size="23" letter-spacing="4">★ PAID IN FULL · 19 NOV 2026 ★</text>
+    </g>
+  </svg>
 
   <div class="bubble">Bill's on me.<br>I won it on <b>make.fun</b></div>
   <svg class="bellhop" viewBox="0 0 400 520" aria-hidden="true">
